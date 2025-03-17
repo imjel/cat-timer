@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+	<title>Cat Timer</title>
+	<link href="./styles.css" rel="stylesheet">
+</head>
+
+<body class="timer-page">
+	<main>
+		<section id="timer-screen">
+			<div id="timerDisplay">
+			  <h1 id="time">01:00</h1>
+			</div>
+			<div id="timer-input">
+			  <div class="input-group">
+				<label for="minutesInput">Minutes:</label>
+				<input type="number" id="minutesInput" min="0" max="60" value="1">
+			  </div>
+			  <div class="input-group">
+				<label for="secondsInput">Seconds:</label>
+				<input type="number" id="secondsInput" min="0" max="59" value="0">
+			  </div>
+			</div>
+			<div id="cat-reading-container">
+			  <img id="cat-reading-sprite" src="./assets/reading_cat/reading_cat1.png" alt="Animated Reading Cat">
+			</div>
+		  </section>
+	</main>
+
+	<div id="button-container">
+		<button id="startBtn" class="Start">Start</button>
+		<button id="pauseBtn" class="Pause">Pause</button>
+		<button id="resumeBtn" class="Resume">Resume</button>
+		<button id="resetBtn" class="Reset">Reset</button>
+	</div>
+	<script src="./timer.js"></script>
+</body>
+
+</html>

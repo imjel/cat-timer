@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+
+	<title>Cat Timer</title>
+	<link href="./styles.css" rel="stylesheet">
+	<link rel="import" href="html/timer.html" />
+	<link rel="import" href="html/ending.html" />
+</head>
+
+<body class="menu-page">
+	<main>
+		<section id="menu-screen">
+			<div id="menuDisplay">
+				<button id="menuBtn" class="menu-button">Set Timer</button>
+			</div>
+			<div id="cat-animation-container">
+				<img id="cat-sprite" src="./assets/cat/cat1.png" alt="Animated Cat">
+			</div>
+		</section>
+	</main>
+	<script src="./menu.js"></script>
+</body>
+</html>

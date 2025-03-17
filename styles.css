@@ -1,0 +1,134 @@
+@font-face {
+	font-family: 'Pixelify Sans';
+	src: url(fonts/PixelifySans-Regular.ttf);
+	font-weight: normal;
+	font-style: normal;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Button styles */
+#button-container {
+	display: flex;
+	justify-content: center;
+	gap: 5;
+	margin-top: 10;
+}
+
+button {
+	font-family: Pixelify Sans;
+	padding: 10px 15px;
+	background-color: rgba(152, 152, 216, 1);
+	color: white;
+	border: 2px solid rgba(255, 255, 255, 1);
+	cursor: pointer;
+	font-size: 14px;
+	transition: all 0.3s ease;
+	min-width: 50px;
+}
+
+button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+	transform: translateY(0);
+}
+
+/* button state styles */
+button.Start {
+	background-color: rgba(152, 152, 216, 1);
+}
+
+button.Pause {
+	background-color: rgb(243, 235, 182);
+}
+
+button.Resume {
+	background-color: rgba(152, 152, 216, 1);
+}
+
+button.Reset {
+	background-color: #ff8279;
+}
+
+button.menu-button {
+	background-color: rgba(152, 152, 216, 1);
+}
+
+/* Menu display */
+#menuDisplay {
+	font-family: Pixelify Sans;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* Cat animation: Menu */
+#cat-animation-container {
+	width: 390px;
+	height: 350px;
+	overflow: hidden;
+}
+
+#cat-sprite {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* Cat animation: timer */
+#cat-reading-container {
+	width: 390x;
+	height: 280px;
+	overflow: hidden;
+	margin-top: 20px;
+}
+
+#cat-reading-sprite {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* Timer display  */
+#timerDisplay {
+	font-family: Pixelify Sans;
+	font-size: 48px;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+/* Timer input styles */
+#timer-input {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 5px;
+}
+
+.input-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.input-group label {
+	font-family: Pixelify Sans;
+	margin-bottom: 1px;
+}
+
+.input-group input {
+	font-family: Pixelify Sans;
+	padding: 4px;
+	width: 40px;
+	border: 2px solid #ccc;
+	border-radius: 2px;
+	text-align: center;
+}
