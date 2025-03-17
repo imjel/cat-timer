@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 	console.log("DOM fully loaded");
 
@@ -260,12 +259,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
+	timerDisplay.addEventListener("click", () => {
+        window.location.href = "set_timer.html";
+    });
+
 	// initialize the display
 	minutesInput.value = 1;
 	secondsInput.value = 0;
 	timerDisplay.textContent = formatting;
 	
 });
-
-
-
