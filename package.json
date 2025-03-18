@@ -1,12 +1,12 @@
 {
   "name": "cat-timer",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Timer app built with Electron!",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/imjel/cute-timer",
   "keywords": [
     "Timer"
   ],
