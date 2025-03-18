@@ -11,4 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	menuButton.addEventListener('click', () => {
 	  window.location.href = 'index.html';
 	});
+
+	document.getElementById('minimizeBtn').addEventListener('click', () => {
+		window.minimize()
+	})
+
+	document.getElementById('closeWindowBtn').addEventListener('click', () => {
+		window.close()
+	})
+
   });

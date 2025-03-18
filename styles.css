@@ -10,14 +10,63 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	resize: none;
 }
 
 :root {
-	background-color: rgb(192, 213, 255);
+	font-family: Pixelify Sans;
 	--dark-blue: rgba(63, 63, 116, 1);
 	--light-purple: rgba(152, 152, 216, 1);
 	--light-yellow: rgb(249, 237, 164);
 	--light-red: #ff8279;
+	--light-blue: rgb(192, 213, 255);
+	background-color: var(--light-blue);
+}
+
+/* title/menu bar styling */
+.titlebar {
+	height: 30px;
+	width: 400px;
+	background: var(--dark-blue);
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	-webkit-app-region: drag;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.title {
+	margin-left:10px;
+	font-size: 16px;
+}
+
+.window-controls {
+	display: flex;
+	-webkit-app-region: no-drag;
+}
+
+.window-controls button {
+	min-height: 30px;
+	min-width: 30px;
+	background: var(--light-blue);
+	border: 2px solid var(--dark-blue);
+	color: var(--dark-blue);
+	font-size: 25px;
+	cursor: pointer;
+	display: flex;          
+  	justify-content: center; 
+  	align-items: center;    
+  	padding: 0;             
+  	line-height: 1;         
+}
+
+.window-controls button:hover {
+	background: var(--dark-blue);
+	color: var(--light-blue);
 }
 
 /* Button styles */
@@ -37,7 +86,7 @@ button {
 	cursor: pointer;
 	font-size: 14px;
 	transition: all 0.3s ease;
-	min-width: 50px;
+	min-width: 40px;
 }
 
 button:hover {
@@ -69,7 +118,17 @@ button.menu-button {
 	background-color: var(--light-purple);
 }
 
-/* Menu display */
+button.Close {
+	height: 40px;
+	margin-top: 25px;
+}
+
+#menu-screen {
+	margin-top: 30px;
+	padding: 10px;
+	justify-content: center;
+}
+
 #menuDisplay {
 	font-family: Pixelify Sans;
 	text-align: center;
@@ -79,7 +138,7 @@ button.menu-button {
 
 /* Cat animation: Menu */
 #cat-animation-container {
-	width: 390px;
+	width: 350px;
 	height: 350px;
 	overflow: hidden;
   	overflow-y: hidden;
@@ -88,7 +147,7 @@ button.menu-button {
 #cat-sprite {
 	width: 100%;
 	height: 100%;
-	object-fit: contain;
+	object-fit: fill;
 	overflow: hidden;
 	overflow-y: hidden;
 }
@@ -116,7 +175,6 @@ button.menu-button {
   color: var(--dark-blue);
   text-align: center;
   margin-top: 15px;
-  margin-bottom: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,6 +209,7 @@ button.menu-button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 15px;
 }
 
 .input-group label {

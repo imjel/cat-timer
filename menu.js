@@ -27,4 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.location.href = 'timer.html';
 	});
 
+	document.getElementById('minimizeBtn').addEventListener('click', () => {
+		window.minimize()
+	})
+
+	document.getElementById('closeWindowBtn').addEventListener('click', () => {
+		window.close()
+	})
+
 });

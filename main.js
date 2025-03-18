@@ -2,21 +2,30 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('node:path')
 
+let mainWindow;
+
 function createWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 400,
     height: 450,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
+	resizable: false, 
+	frame: false, // remove default titlebar
+	webPreferences: {
+		nodeIntegration: true,
+		contextIsolation: false,
+		enableRemoteModule: true
+	  }
   })
 
-  // and load the index.html of the app.
+  // load the index.html of the app.
   mainWindow.loadFile('index.html')
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.setAutoHideMenuBar(true);
+  mainWindow.autoHideMenuBar(true);
+
+  // Open DevTools.
+  //mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -38,6 +47,3 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.

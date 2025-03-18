@@ -278,6 +278,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		resetButton.style.display = "inline-block";
 	});
 
+	document.getElementById('minimizeBtn').addEventListener('click', () => {
+		window.minimize()
+	})
+
+	document.getElementById('closeWindowBtn').addEventListener('click', () => {
+		window.close()
+	})
+
+
 	// initialize the display
 	minutesInput.value = 1;
 	secondsInput.value = 0;
