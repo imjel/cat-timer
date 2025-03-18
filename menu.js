@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const catSprite = document.getElementById("cat-sprite");
 	const totalSteps = 9;
 	let currentStep = 1;
-	const speed = 150;
+	const speed = 200;
 	let animationInterval;
 
 	function updateSprite() {

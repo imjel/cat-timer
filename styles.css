@@ -12,6 +12,14 @@
 	align-items: center;
 }
 
+:root {
+	background-color: rgb(192, 213, 255);
+	--dark-blue: rgba(63, 63, 116, 1);
+	--light-purple: rgba(152, 152, 216, 1);
+	--light-yellow: rgb(249, 237, 164);
+	--light-red: #ff8279;
+}
+
 /* Button styles */
 #button-container {
 	display: flex;
@@ -22,10 +30,10 @@
 
 button {
 	font-family: Pixelify Sans;
-	padding: 10px 15px;
-	background-color: rgba(152, 152, 216, 1);
+	padding: 10px 10px;
+	background-color: var(--light-purple);
 	color: white;
-	border: 2px solid rgba(255, 255, 255, 1);
+	border: 2px solid white;
 	cursor: pointer;
 	font-size: 14px;
 	transition: all 0.3s ease;
@@ -33,8 +41,7 @@ button {
 }
 
 button:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transform: translateY(-1px);
 }
 
 button:active {
@@ -43,23 +50,23 @@ button:active {
 
 /* button state styles */
 button.Start {
-	background-color: rgba(152, 152, 216, 1);
+	background-color: var(--light-purple);
 }
 
 button.Pause {
-	background-color: rgb(243, 235, 182);
+	background-color: var(--light-yellow);
 }
 
 button.Resume {
-	background-color: rgba(152, 152, 216, 1);
+	background-color: var(--light-purple);
 }
 
 button.Reset {
-	background-color: #ff8279;
+	background-color: var(--light-red);
 }
 
 button.menu-button {
-	background-color: rgba(152, 152, 216, 1);
+	background-color: var(--light-purple);
 }
 
 /* Menu display */
@@ -75,36 +82,61 @@ button.menu-button {
 	width: 390px;
 	height: 350px;
 	overflow: hidden;
+  	overflow-y: hidden;
 }
 
 #cat-sprite {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
+	overflow: hidden;
+	overflow-y: hidden;
 }
 
 /* Cat animation: timer */
 #cat-reading-container {
-	width: 390x;
-	height: 280px;
+	width: 310x;
+	height: 320px;
 	overflow: hidden;
-	margin-top: 20px;
+	overflow-y: hidden;
+	margin-top: 10px;
 }
 
 #cat-reading-sprite {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
+	overflow: hidden;
+	overflow-y: hidden;
 }
 
 /* Timer display  */
 #timerDisplay {
-	font-family: Pixelify Sans;
-	font-size: 48px;
-	text-align: center;
-	line-height: 10px;
-	margin-top: 0px;
-	margin-bottom: 5px;
+  font-family: Pixelify Sans;
+  color: var(--dark-blue);
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#time {
+	font-size: 72px;
+	margin: 0 10px;
+	line-height: 1;
+}
+
+#timerDisplay button {
+	height: 40px;
+	align-self: center;
+  }
+
+#time:hover{
+	color: var(--light-purple);
+	cursor: pointer;
 }
 
 /* Timer input styles */
@@ -130,7 +162,7 @@ button.menu-button {
 	font-family: Pixelify Sans;
 	padding: 4px;
 	width: 40px;
-	border: 2px solid #ccc;
+	border: 2px solid white;
 	border-radius: 2px;
 	text-align: center;
 }

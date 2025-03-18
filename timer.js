@@ -7,16 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	const resetButton = document.getElementById("resetBtn");
 	const pauseButton = document.getElementById("pauseBtn");
 	const resumeButton = document.getElementById("resumeBtn");
+	const closeButton = document.getElementById("closeBtn");
 	const timerContainer = document.getElementById("timerDisplay");
-	const inputContainer = document.getElementById("input-group");
 	const minutesInput = document.getElementById("minutesInput");
   	const secondsInput = document.getElementById("secondsInput");
+	const catContainer = document.getElementById("cat-reading-container");
+	const inputContainer = document.getElementById("input-container");
+
 
 	// cat animation variables
 	const catSprite = document.getElementById("cat-reading-sprite");
 	const totalSteps = 9;
 	let currentStep = 1;
-	const speed = 150;
+	const speed = 200;
 	let animationInterval;
 
 	// cat animation
@@ -61,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	pauseButton.style.display = "none";
 	resumeButton.style.display = "none";
+	resumeButton.style.display = "none";
+	inputContainer.style.display = "none";
 
 	// formatting the clock with padding
 	function formatTime() {
@@ -158,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	// handling timer input
-
 	function updateTimerFromUser() {
 		const newMins = parseInt(minutesInput.value || 0);
 		const newSecs = parseInt(secondsInput.value || 0);
@@ -246,7 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		secondsInput.disabled = true;
 	})
 
-
 	minutesInput.addEventListener("input", function () {
 		if (!isRunning) {
 			updateTimerFromUser();
@@ -260,8 +263,20 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	timerDisplay.addEventListener("click", () => {
-        window.location.href = "set_timer.html";
+		inputContainer.style.display = "block";
+		catContainer.style.display = "none";
+		startButton.style.display = "none";
+		pauseButton.style.display = "none";
+		resumeButton.style.display = "none";
+		resetButton.style.display = "none";
     });
+
+	closeButton.addEventListener('click', () => {
+		inputContainer.style.display = "none";
+		catContainer.style.display = "block";
+		startButton.style.display = "inline-block";
+		resetButton.style.display = "inline-block";
+	});
 
 	// initialize the display
 	minutesInput.value = 1;
