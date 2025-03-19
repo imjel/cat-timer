@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.location.href = 'timer.html';
 	});
 
+	// titlebar functionality
 	document.getElementById('minimizeBtn').addEventListener('click', () => {
 		window.minimize()
 	})

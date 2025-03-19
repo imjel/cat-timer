@@ -4,46 +4,40 @@ const path = require('node:path')
 
 let mainWindow;
 
-function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 400,
-    height: 450,
-	resizable: false, 
-	frame: false, // remove default titlebar
-	webPreferences: {
-		nodeIntegration: true,
-		contextIsolation: false,
-		enableRemoteModule: true
-	  }
-  })
+function createWindow() {
 
-  // load the index.html of the app.
-  mainWindow.loadFile('index.html')
+	mainWindow = new BrowserWindow({
+		width: 400,
+		height: 480,
+		resizable: false,
+		frame: false, // remove default titlebar
+		webPreferences: {
+			nodeIntegration: true,
+			contextIsolation: false,
+			enableRemoteModule: true
+		}
+	})
 
-  mainWindow.setAutoHideMenuBar(true);
-  mainWindow.autoHideMenuBar(true);
+	// load the index.html of the app.
+	mainWindow.loadFile('index.html')
 
-  // Open DevTools.
-  //mainWindow.webContents.openDevTools()
+	mainWindow.setAutoHideMenuBar(true);
+	mainWindow.autoHideMenuBar(true);
+
+	// DevTools:
+	//   mainWindow.webContents.openDevTools()
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  createWindow()
+	createWindow()
 
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
+	app.on('activate', function () {
+		if (BrowserWindow.getAllWindows().length === 0) createWindow()
+	})
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+// Quit when all windows are closed, except on macOS
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
+	if (process.platform !== 'darwin') app.quit()
 })
+

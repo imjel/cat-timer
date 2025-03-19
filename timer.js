@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 	console.log("DOM fully loaded");
 
-	// DOM
-	const timerDisplay = document.getElementById("time");
 	const startButton = document.getElementById("startBtn");
 	const resetButton = document.getElementById("resetBtn");
 	const pauseButton = document.getElementById("pauseBtn");
 	const resumeButton = document.getElementById("resumeBtn");
 	const closeButton = document.getElementById("closeBtn");
+
+	const timerDisplay = document.getElementById("time"); // clock
 	const timerContainer = document.getElementById("timerDisplay");
+
+	const inputContainer = document.getElementById("input-container");
 	const minutesInput = document.getElementById("minutesInput");
   	const secondsInput = document.getElementById("secondsInput");
+
+	// cat sprite vars
 	const catContainer = document.getElementById("cat-reading-container");
-	const inputContainer = document.getElementById("input-container");
-
-
-	// cat animation variables
 	const catSprite = document.getElementById("cat-reading-sprite");
 	const totalSteps = 9;
 	let currentStep = 1;
@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	startAnimation();
 
-
 	// timer variables
 	let minutes = 1;
 	let seconds = minutes * 60;
@@ -50,70 +49,68 @@ document.addEventListener('DOMContentLoaded', () => {
 	let formatting = formatTime();
 
 	// events
-	const tickEvent = new CustomEvent('tick', {
-		detail: {
-			mins: minutes,
-			secs: 0,
-			seconds: seconds,
-			formatting: formatting
-		}
-	});
 	const completeEvent = new Event('complete');
 	const pauseEvent = new Event('pause');
 	const resumeEvent = new Event('resume');
 
+	// these buttons only display under certain event conditions
 	pauseButton.style.display = "none";
 	resumeButton.style.display = "none";
 	resumeButton.style.display = "none";
 	inputContainer.style.display = "none";
 
-	// formatting the clock with padding
+	// formatting the clockface
 	function formatTime() {
 		const mins = Math.floor(seconds / 60);
 		const secs = Math.floor(seconds % 60);
 		return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 	}
 
-	// updates the timer's state
-	function update() {
-		const timeNow = new Date().getTime();
-		const timeElapsed = Math.floor((timeNow - startTime) / 1000);
-
-		seconds = Math.max(minutes * 60 - timeElapsed, 0);
-		formatting = formatTime();
-
-		// Create new tick event with updated values
-		const newTickEvent = new CustomEvent('tick', {
-			detail: {
-				mins: Math.floor(seconds / 60),
-				secs: Math.floor(seconds % 60),
-				seconds: seconds,
-				formatting: formatting
-			}
-		});
-
-		document.dispatchEvent(newTickEvent);
-
-		// if the timer is complete, dispatch complete event
-		if (seconds <= 0) {
-			pause();
-			document.dispatchEvent(completeEvent);
-
-			window.location.href = 'ending.html';
-		}
-	}
-
-	// start timer
+	// starts timer and updates its state
 	function start() {
 		if (!isRunning) {
-			updateTimerFromUser();
 
+			updateTimerFromUser(); // checks if user has set a new time
+			
 			isRunning = true;
+			const initialTotalSeconds = seconds;
 			startTime = new Date().getTime();
-
-			// update the time and display, then set the interval
+			
+			// update function counts down
+			function update() {
+				const currentTime = new Date().getTime();
+				const elapsedSeconds = Math.floor((currentTime - startTime) / 1000);
+				
+				// remaining seconds in timer are based on initial total and elapsed time
+				seconds = Math.max(initialTotalSeconds - elapsedSeconds, 0);
+				formatting = formatTime();
+				
+				const newTickEvent = new CustomEvent('tick', {
+					detail: {
+						mins: Math.floor(seconds / 60),
+						secs: Math.floor(seconds % 60),
+						seconds: seconds,
+						formatting: formatting
+					}
+				});
+				
+				document.dispatchEvent(newTickEvent);
+				
+				// if the timer is complete, switch to ending page
+				if (seconds <= 0) {
+					clearInterval(timerInterval);
+					isRunning = false;
+					document.dispatchEvent(completeEvent);
+					
+					window.location.href = 'ending.html';
+				}
+			}
+			
+			// initial update
 			update();
-			timerInterval = setInterval(update, 1000);
+
+			// call update every second
+			timerInterval = setInterval(update, 1000); 
 		}
 	}
 
@@ -175,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	}
 
-	// event listeners for the timer
+	// event listeners for the timer states
 	document.addEventListener('tick', function (e) {
 		timerDisplay.textContent = e.detail.formatting;
 	});
@@ -207,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		resumeButton.style.display = "none";
 	})
 
-	// button event handlers
+	// button event listeners
 	startButton.addEventListener("click", function () {
 		if (!isRunning) {
 			if (seconds <= 0) {
@@ -250,6 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		secondsInput.disabled = true;
 	})
 
+	closeButton.addEventListener('click', () => {
+		inputContainer.style.display = "none";
+		catContainer.style.display = "block";
+		startButton.style.display = "inline-block";
+		resetButton.style.display = "inline-block";
+	});
+
+	// input state listeners: 
 	minutesInput.addEventListener("input", function () {
 		if (!isRunning) {
 			updateTimerFromUser();
@@ -271,13 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		resetButton.style.display = "none";
     });
 
-	closeButton.addEventListener('click', () => {
-		inputContainer.style.display = "none";
-		catContainer.style.display = "block";
-		startButton.style.display = "inline-block";
-		resetButton.style.display = "inline-block";
-	});
-
+	// titlebar functionality
 	document.getElementById('minimizeBtn').addEventListener('click', () => {
 		window.minimize()
 	})
@@ -285,7 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('closeWindowBtn').addEventListener('click', () => {
 		window.close()
 	})
-
 
 	// initialize the display
 	minutesInput.value = 1;
