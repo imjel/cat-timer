@@ -11,7 +11,7 @@ To download the app, [visit the releases page](https://github.com/imjel/cat-time
 
 ## Images
 
-<img width="420" alt="Timer" src="https://github.com/user-attachments/assets/e4295eaa-ec12-42ec-9ba7-89aea6f06cb4" />
-<img width="420" alt="Ending" src="https://github.com/user-attachments/assets/7283fe31-f1ec-4d2d-97ef-2ebc8706fddd" />
+<img width="300" alt="Timer" src="https://github.com/user-attachments/assets/e4295eaa-ec12-42ec-9ba7-89aea6f06cb4" />
+<img width="300" alt="Ending" src="https://github.com/user-attachments/assets/7283fe31-f1ec-4d2d-97ef-2ebc8706fddd" />
 
 [CC0 1.0 (Public Domain)](LICENSE.md)
