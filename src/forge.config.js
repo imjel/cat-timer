@@ -5,7 +5,7 @@ module.exports = {
   packagerConfig: {
 	name: 'Cat Timer',
     asar: true,
-	icon: '/path/to/icon'
+	icon: './assets/icon'
   },
   rebuildConfig: {},
   makers: [
@@ -42,5 +42,18 @@ module.exports = {
       [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
+  ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'imjel',
+          name: 'cat-timer'
+        },
+        prerelease: false,
+        draft: true
+      },
+    }
   ],
 };
