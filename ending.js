@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	const menuButton = document.getElementById("menuBtn");
 	const restartButton = document.getElementById("restartBtn");
+	var ding = new Audio("./assets/ding.mp3"); 
+
+	ding.play();
 
 	restartButton.addEventListener('click', () => {
 		window.location.href = 'timer.html';
@@ -13,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	document.getElementById('minimizeBtn').addEventListener('click', () => {
-		window.minimize()
+		const { ipcRenderer } = require('electron');
+		ipcRenderer.send('minimize-window');
 	})
 
 	document.getElementById('closeWindowBtn').addEventListener('click', () => {

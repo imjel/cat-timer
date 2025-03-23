@@ -22,21 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
 	const speed = 200;
 	let animationInterval;
 
-	// cat animation
-	function updateSprite() {
-		catSprite.src = `./assets/reading_cat/reading_cat${currentStep}.png`;
-		currentStep = currentStep % totalSteps + 1;
-	}
+	// // cat animation
+	// function updateSprite() {
+	// 	catSprite.src = `./assets/reading_cat/reading_cat${currentStep}.png`;
+	// 	currentStep = currentStep % totalSteps + 1;
+	// }
 
-	function startAnimation() {
-		if (animationInterval) {
-			clearInterval(animationInterval);
-		}
+	// function startAnimation() {
+	// 	if (animationInterval) {
+	// 		clearInterval(animationInterval);
+	// 	}
 
-		animationInterval = setInterval(updateSprite, speed);
-	}
+	// 	animationInterval = setInterval(updateSprite, speed);
+	// }
 
-	startAnimation();
+	// startAnimation();
 
 	// timer variables
 	let minutes = 1;
@@ -278,7 +278,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// titlebar functionality
 	document.getElementById('minimizeBtn').addEventListener('click', () => {
-		window.minimize()
+		const { ipcRenderer } = require('electron');
+		ipcRenderer.send('minimize-window');
 	})
 
 	document.getElementById('closeWindowBtn').addEventListener('click', () => {
