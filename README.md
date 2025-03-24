@@ -1,9 +1,9 @@
-# cute-timer
+# Cat Timer
 
-A cute timer application with a cat companion. Javascript desktop app implemented with Electron. 
+A simple and cute timer application with a cat companion. JavaScript desktop app built with Electron. All illustrations by me!
 
-## To Use
+## Download
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To download the app, visit the releases page. MacOS compatible.
 
 [CC0 1.0 (Public Domain)](LICENSE.md)
