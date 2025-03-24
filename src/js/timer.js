@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (inputContainer.style.display === "none") {
 			startButton.style.display = "inline-block";
 		}
-		// startButton.style.display = "none";
+		startButton.style.display = "none";
 		pauseButton.style.display = "inline-block";
 		resumeButton.style.display = "none";
 		timerContainer.classList.remove("timer-complete");
